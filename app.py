@@ -16,12 +16,9 @@ from pyxlsb import open_workbook as open_xlsb
 
 from prompt import neg_summarizer, pos_summarizer
 
-## Extracting endpoint and key from the config file
-with open("config.yaml") as yaml_file:
-        content = yaml.safe_load(yaml_file)
 
-endpoint = content["ENDPOINT"]
-key = content["API_KEY"]
+endpoint = os.getenv('AZURE_COGNITIVE_ENDPOINT')
+key = os.getenv('AZURE_COGNITIVE_API_KEY')
 
 state = st.session_state
 

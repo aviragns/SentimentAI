@@ -5,25 +5,23 @@ import os
 with open("config.yaml") as yaml_file:
         content = yaml.safe_load(yaml_file)
 
-credentials = content["credentials"]
-models = content["models"]
+
 hyperparams = content["hyperparams"]
 
-ENGINE=models["MODEL"]
-OPENAI_API_KEY = credentials["OPENAI_API_KEY"]
+OPENAI_API_KEY = os.getenv('AZURE_OPENAI_API_KEY')
 TEMPERATURE = hyperparams["TEMPERATURE"]
 TOKENS=hyperparams["MAX_TOKENS"]
 openai.api_type = "azure"
-openai.api_base = "https://openaiserviceusecases.openai.azure.com/"
+openai.api_base = os.getenv('AZURE_OPENAI_ENDPOINT')
 openai.api_version = "2023-07-01-preview"
-openai.api_key = os.getenv('AZURE_COGNITIVE_API_KEY')
+openai.api_key = os.getenv('AZURE_OPENAI_API_KEY')
 
 
 def model(input_prompt):
     messageArray = [{"role":"system","content":"You are an AI assistant that helps people find or summarize information."},
                     {"role":"user","content":str(input_prompt)}]
     model_response = openai.ChatCompletion.create(
-        engine="SentimentAnalysis",
+        engine=os.getenv('AZURE_OPENAI_MODELNAME'),
         messages=messageArray,
         temperature=0.7,
         max_tokens=900,

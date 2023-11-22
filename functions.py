@@ -9,14 +9,11 @@ import os
 
 from prompt import aspect_based_sentiment_analyzer, category_analyzer, sentiment_analyzer, sentiment_analyzer_2
 
-## Extracting endpoint and key from the config file
-with open("config.yaml") as yaml_file:
-        content = yaml.safe_load(yaml_file)
-
-langEndpoint = content["LANG_ENDPOINT"]
-langKey = os.getenv('AZURE_LANG_API_KEY')
-translatorEndpoint = content["TRANSLATOR_ENDPOINT"]
+langEndpoint = 'langEndpoint'
+langKey = 'langKey'
+translatorEndpoint = os.getenv('AZURE_TRANSLATOR_ENDPOINT')
 translatorKey = os.getenv('AZURE_TRANSLATOR_API_KEY')
+
 
 def sentiment_keyphrase_analyzer(data,client):
     sentiments = []

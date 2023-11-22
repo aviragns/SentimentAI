@@ -1,21 +1,3 @@
-API_KEY: e683ed8e943d4c45be7bf2e42f155ab2
-
-ENDPOINT: https://exoduscognitiveservices.cognitiveservices.azure.com/
-
-LANG_API_KEY: 691848d064494321bc01653e4e91bfc6
-
-LANG_ENDPOINT: https://langservicenew.cognitiveservices.azure.com/
-
-TRANSLATOR_API_KEY: 0065c5e081604333955f7201afde95fa
-
-TRANSLATOR_ENDPOINT: https://api.cognitive.microsofttranslator.com/
-
-credentials:
-  OPENAI_API_KEY: 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
-
-models:
-  MODEL: text-davinci-003
-
 hyperparams:
   TEMPERATURE: 0
   MAX_TOKENS: 3000
