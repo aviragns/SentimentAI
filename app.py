@@ -200,15 +200,19 @@ if task_message.button("Submit"):
                 data_df.at[index, 'Confidence Score'] = max_confidence
 
         data_df = data_df.reset_index(drop=True)
+
         ## Calling the GenAI model to identify the categories, from a given list
         category_list= genai_categories(data_df['Translation'])
+
+        ## Calling the Azure text classification model to identify the categories, from a given list
         #category_list= custom_text_classification(translations, client) #genai_categories(data_df[col])
         #for i in range(len(category_list)):
         #    if category_list[i]=='null':
         #        dict[''.join(i)] = translations[i]
         #genai_cat_list = dict.values
         #for i in range(len(dict)):
-        #    category_list[dict.keys(i)] = genai_cat_list[i] 
+        #    category_list[dict.keys(i)] = genai_cat_list[i]
+
         data_df['Category'] = category_list
 
         progress_bar.progress(90)
